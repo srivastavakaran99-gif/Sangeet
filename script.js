@@ -247,14 +247,54 @@ volumeIcon.addEventListener("click", () => {
 });
 
 //----------------------------------------
+//----------------------------------------
+//===========================[ SONG CARD CONATINER]===========================
 
+const cardContainer = document.querySelector(".cardContainer");
+let currentSong = null;
 
+fetch("song.json")
+  .then(res => res.json())
+  .then(songs => {
+    songs.forEach(song => {
+      const card = document.createElement("div");
+      card.classList.add("card");
 
+      card.innerHTML = `
+        <img src="${song.cover}" alt="${song.title}">
+        <button class="play-btn" data-audio="${song.file}" data-title="${song.title}">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </button>
+        <h3>${song.title}</h3>
+        <p>${song.artist}</p>
+      `;
 
+      cardContainer.appendChild(card);
+    });
 
+    addPlayEvents();
+  });
 
+function addPlayEvents() {
+  document.querySelectorAll(".play-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const songSrc = btn.dataset.audio;
+      const title = btn.dataset.title;
 
+      if (currentSong !== songSrc) {
+        audio.src = songSrc;
+        audio.play();
+        currentSong = songSrc;
+      } else {
+        audio.paused ? audio.play() : audio.pause();
+      }
 
+      document.querySelector(".songinfo").innerText = title;
+    });
+  });
+}
 
 
 
@@ -294,121 +334,14 @@ volumeIcon.addEventListener("click", () => {
 
 
 
-//----------------------------------------------------------------------------------------------------------
-// // Play button click logic
-// document.addEventListener("click", (e) => {
-//   const btn = e.target.closest(".play-btn");
-//   if (!btn) return;
 
-//   const id = btn.dataset.id;   // button me data-id hona chahiye
-//   console.log("Clicked ID:", id);
 
-//   const song = songs.find(s => s.id == id);
 
-//   if (song) {
-//     audio.src = song.file;
-//     audio.play();
-//     console.log("Playing:", song.title);
-    
-//     //Audio duration:-
-//     audio.addEventListener("loadeddata",()=>{
-//         let duration = audio.duration;
-//         console.log("duration:",audio.duration,"currentTime:",audio.currentTime,"currentSrc:",audio.currentSrc);
-//     });
-// }
-//   else {
-//     console.log("Song not found for id:", id);
-//   }
-// });
 
-// // ----- GLOBALS -----
-// let currentIndex = 0; // current song index
 
- 
-// // Playbar elements
-// const songInfo = document.querySelector(".songinfo");
-// const playBtn = document.querySelector(".playbtn");   // Play/Pause button
-// const prevBtn = document.querySelector(".prev-btn");   // Previous button
-// const nextBtn = document.querySelector(".next-btn");   // Next button
-  
-// // ----- FUNCTION: play song by index -----
-// function playSong(index) {
-//   currentIndex = index;
-//   const song = songs[index];
-//   if (!song) return;
 
-//   audio.src = song.file;
-//   audio.play();
 
-//   // Update playbar info
-//   songInfo.innerText = `${song.title} - ${song.artist}`;
 
-//   // Update play button to "pause"
-//   if(playBtn) playBtn.innerText = "⏸";
-// }
-
-// // ----- FUNCTION: toggle play/pause -----
-// function togglePlay() {
-//   if(audio.paused) {
-//     audio.play();
-//   } else {
-//     audio.pause();
-//   }
-// }
-
-// // ----- FUNCTION: previous song -----
-// function prevSong() {
-//   let newIndex = (currentIndex - 1 + songs.length) % songs.length;
-//   playSong(newIndex);
-// }
-
-// // ----- FUNCTION: next song -----
-// function nextSong() {
-//   let newIndex = (currentIndex + 1) % songs.length;
-//   playSong(newIndex);
-// }
-
-// // ----- BUTTON EVENT LISTENERS -----
-// if(playBtn) playBtn.addEventListener("click", togglePlay);
-// if(prevBtn) prevBtn.addEventListener("click", prevSong);
-// if(nextBtn) nextBtn.addEventListener("click", nextSong);
-
-// // ----- LIBRARY SONG CLICK -----
-// document.querySelector(".songlist").addEventListener("click", (e)=>{
-//   const li = e.target.closest("li");
-//   if(!li) return;
-
-//   const id = li.dataset.id;
-//   const index = songs.findIndex(s => s.id == id);
-//   if(index >= 0){
-//     playSong(index);  // library click → song play & playbar update
-//   }
-// });
-// //------------------------------------------------------------------
-// // Elements
-// const playBtn = document.querySelector(".play1"); // play button image in playbar
-
-// function updatePlayBtn(paused){
-//     if(!playBtn) return;
-//     if(paused){
-//         playBtn.src = "play.svg"; // song paused → show play icon
-//     } else {
-//         playBtn.src = "mute.svg"; // song playing → show pause/mute icon
-//     }
-// }
-
-// // Toggle play/pause
-// function togglePlay(){
-//     if(audio.paused){
-//         audio.play();
-//     } else {
-//         audio.pause();
-//     }
-// }
-
-// // Listen to play/pause events on audio
-// audio.addEventListener("play", ()=> updatePlayBtn(false));   // song is playing
-// audio.addEventListener("pause", ()=> updatePlayBtn(true));   // song paused
 
 
 
