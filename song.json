@@ -3,56 +3,141 @@
         "id": 1,
         "title": "happy Hits!",
         "artist": "Aren stipher",
-        "file": "Music-Player/song/song6.mp3",
-        "cover": "Music-Player/images/img2.jpg"
+        "file": "Music-Player/song/song1.mp3",
+        "cover": "Music-Player/images/a.jpg"
     },
     {
         "id": 2,
         "title": "DIL LAGANA MANA THA",
         "artist": "Krish Mondal,Kishor Mondal",
         "file": "Music-Player/song/song2.mp3",
-        "cover": "Music-Player/images/img3.jpg"
+        "cover": "Music-Player/images/img19.jpg"
     },
     {
         "id": 3,
         "title": "Aasma Aasma",
         "artist": "Jubin Nautiyal,Neeti Mohan",
         "file": "Music-Player/song/song3.mp3",
-        "cover": "Music-Player/images/img4.jpg"
+        "cover": "Music-Player/images/img2.jpg"
     },
     {
         "id": 4,
         "title": "KETHE REH GAYA",
         "artist": "Neeti Mohan,Abhijeet Vaghani",
         "file": "Music-Player/song/song4.mp3",
-        "cover": "Music-Player/images/img5.jpg"
+        "cover": "Music-Player/images/img3.jpg"
     },
     {
         "id": 5,
         "title": "AE MERE WATAN KE LOGO",
         "artist": "Lata Mangeshkar",
         "file": "Music-Player/song/song5.mp3",
-        "cover": "Music-Player/images/img5.jpg"
+        "cover": "Music-Player/images/img4.jpg"
     },
     {
         "id": 6,
         "title": "KETHE REH GAYA",
         "artist": "Neeti Mohan,Abhijeet Vaghani",
-        "file": "Music-Player/song/song4.mp3",
+        "file": "Music-Player/song/song6.mp3",
         "cover": "Music-Player/images/img5.jpg"
     },
     {
         "id": 7,
         "title": "Aasma Aasma",
         "artist": "Jubin Nautiyal,Neeti Mohan",
-        "file": "Music-Player/song/song3.mp3",
-        "cover": "Music-Player/images/img4.jpg"
+        "file": "Music-Player/song/song7.mp3",
+        "cover": "Music-Player/images/img6.jpg"
     },
     {
         "id": 8,
         "title": "happy Hits!",
         "artist": "Aren stipher",
+        "file": "Music-Player/song/song8.mp3",
+        "cover": "Music-Player/images/img7.jpg"
+    },
+    {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song9.mp3",
+        "cover": "Music-Player/images/img8.jpg"
+    },
+    {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song10.mp3",
+        "cover": "Music-Player/images/img9.jpg"
+    },
+    {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song11.mp3",
+        "cover": "Music-Player/images/img10.jpg"
+    },
+    {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song12.mp3",
+        "cover": "Music-Player/images/img11.jpg"
+    },
+    {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song13.mp3",
+        "cover": "Music-Player/images/img12.jpg"
+    },
+    {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song14.mp3",
+        "cover": "Music-Player/images/img18.jpg"
+    },
+    {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song15.mp3",
+        "cover": "Music-Player/images/img14.jpg"
+    } ,  {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song16.mp3",
+        "cover": "Music-Player/images/img15.jpg"
+    },   {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song17.mp3",
+        "cover": "Music-Player/images/img16.jpg"
+    },   {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song18.mp3",
+        "cover": "Music-Player/images/img17.jpg"
+    },   {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song19.mp3",
+        "cover": "Music-Player/images/img18.jpg"
+    },   {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song20.mp3",
+        "cover": "Music-Player/images/img19.jpg"
+    },   {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
         "file": "Music-Player/song/song1.mp3",
-        "cover": "Music-Player/images/img2.jpg"
+        "cover": "Music-Player/images/img20.jpg"
     }
 ]
