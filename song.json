@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song6.mp3",
+        "cover": "Music-Player/images/img2.jpg"
+    },
+    {
+        "id": 2,
+        "title": "DIL LAGANA MANA THA",
+        "artist": "Krish Mondal,Kishor Mondal",
+        "file": "Music-Player/song/song2.mp3",
+        "cover": "Music-Player/images/img3.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Aasma Aasma",
+        "artist": "Jubin Nautiyal,Neeti Mohan",
+        "file": "Music-Player/song/song3.mp3",
+        "cover": "Music-Player/images/img4.jpg"
+    },
+    {
+        "id": 4,
+        "title": "KETHE REH GAYA",
+        "artist": "Neeti Mohan,Abhijeet Vaghani",
+        "file": "Music-Player/song/song4.mp3",
+        "cover": "Music-Player/images/img5.jpg"
+    },
+    {
+        "id": 5,
+        "title": "AE MERE WATAN KE LOGO",
+        "artist": "Lata Mangeshkar",
+        "file": "Music-Player/song/song5.mp3",
+        "cover": "Music-Player/images/img5.jpg"
+    },
+    {
+        "id": 6,
+        "title": "KETHE REH GAYA",
+        "artist": "Neeti Mohan,Abhijeet Vaghani",
+        "file": "Music-Player/song/song4.mp3",
+        "cover": "Music-Player/images/img5.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Aasma Aasma",
+        "artist": "Jubin Nautiyal,Neeti Mohan",
+        "file": "Music-Player/song/song3.mp3",
+        "cover": "Music-Player/images/img4.jpg"
+    },
+    {
+        "id": 8,
+        "title": "happy Hits!",
+        "artist": "Aren stipher",
+        "file": "Music-Player/song/song1.mp3",
+        "cover": "Music-Player/images/img2.jpg"
+    }
+]

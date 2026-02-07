@@ -1,0 +1,35 @@
+/*m-2 means margin 2px*/
+/* Utility CSS File */
+.border{
+    border:2px solid red;
+    margin: 3px;
+}
+.flex{
+    display: flex;
+}
+.justify-center{
+    justify-content: center;
+}
+.items-center{
+    align-items: center;
+} 
+.bg-black{
+    background-color: black;
+    color:white;
+}
+.invert{            
+    filter: invert(1); 
+    /* to invert colors of images like logo and icons form black color into white*/
+}  
+.bg-grey{
+    background-color: #121212;
+}
+.rounded{
+    border-radius: 10px;
+}
+.m-2{
+    margin:5px;
+}
+.p-1{
+    padding:10px;
+}
