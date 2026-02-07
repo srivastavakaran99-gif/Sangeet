@@ -35,7 +35,38 @@ html, body {
     gap:15px;
     padding-top: 14px;
     font-weight: bold;
+      cursor: pointer;
+
+
+  transition: background 0.2s ease, transform 0.1s ease;
 }
+/* HOME & SEARCH hover + click effect */
+
+
+/* hover effect */
+.home ul li:hover {
+  background-color: transparent;
+}
+
+/* click (press) effect */
+.home ul li:active {
+
+  transform: scale(0.96);
+}
+
+/* icon + text thoda bright on hover */
+.home ul li:hover img,
+.home ul li:hover span {
+  opacity: 1;
+}
+
+/* default thoda muted look */
+.home ul li img,
+.home ul li span {
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
                         /*LIBRARY SECTION*/
 .heading{
     display: flex;
@@ -51,6 +82,10 @@ html, body {
 .heading h2{
     font-size: 20px;
     white-space: nowrap;
+    font-family: "Playwrite NZ Basic", cursive;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
 }
 .heading img{
     width:30px;
@@ -90,9 +125,14 @@ html, body {
 /*song play list*/
 .spotifyPlaylist{
     padding: 16px;
-    
-}
+    }
+.spotifyPlaylist h1{
+     font-family: "Momo Signature", cursive;
+  font-weight: 400;
+  font-style: normal;
+    }
 .cardContainer{   
+    
     display: flex;
     flex-direction:row;
     flex-wrap: wrap;
@@ -109,6 +149,7 @@ html, body {
    
 }
 .card{
+    
     height:300px;              /* fixed height so all cards same */
     width: 188px;
     border-radius:8px;
@@ -349,6 +390,11 @@ html, body {
 .library{
     min-height: 80vh;
     position: relative;
+    border-radius: 30px;
+}
+.rounded{
+  border-radius: 30px;
+
 }
 /*-------------------song list---------------------- */
 /*Song list ko boxed Spotify style me lao*/
@@ -508,13 +554,6 @@ html, body {
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-/* hover / focus → slider appear */
-/* .volume:hover .volume-range,
-.volume:focus-within .volume-range {
-  transform: translateY(-50%) scaleX(1);
-  opacity: 1;
-  pointer-events: auto;
-} */
 
 /* ================== TRACK ================== */
 .volume-range::-webkit-slider-runnable-track {
@@ -548,6 +587,7 @@ html, body {
   border-radius: 50%;
   cursor: pointer;
 }
+
 
 /* ================== PERCENT TEXT ================== */
 .volume-percent {
@@ -625,22 +665,23 @@ html, body {
 }
 
 
+
 /*=========================================================================================
                                              MEDIA QUERY                                                   */
                              
-                                              /* ================= MOBILE VIEW ================= */
+/* ================= MOBILE VIEW PERFECT ================= */
 @media (max-width: 768px) {
 
-  /* BODY */
+  /* ---------- BASIC ---------- */
   body {
     overflow: hidden;
   }
 
-  /* ================= LAYOUT ================= */
+  /* ---------- LAYOUT ---------- */
   .left {
     position: fixed;
-    left: -100%;
     top: 0;
+    left: -100%;
     width: 80%;
     height: 100vh;
     background: #000;
@@ -648,7 +689,6 @@ html, body {
     transition: left 0.3s ease;
   }
 
-  /* left open state (JS se add/remove class) */
   .left.active {
     left: 0;
   }
@@ -658,42 +698,49 @@ html, body {
     margin: 0;
   }
 
-  /* ================= HEADER ================= */
+  /* ---------- HEADER ---------- */
   .header {
-    padding: 1px;
+    padding: 10px 14px;
   }
 
   .hamburger {
-    margin-bottom: 15px;
-
     display: block;
+    width: 28px;
     cursor: pointer;
   }
 
   .close {
     position: absolute;
-    top:25px;
-    left:275px;
-    display:inline ;
+    padding: 16px;
+    top: 11px;
+    right: 43px;
+    display: block;
     width: 24px;
     cursor: pointer;
   }
 
-  /* ================= CARD AREA ================= */
+  .cross {
+    display: none;
+  }
+
+  /* ---------- CARD AREA ---------- */
+  .spotifyPlaylist {
+    padding: 3px;
+  }
+  .spotifyPlaylist h1{
+    font-size:1.5rem;
+  }
   .cardContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     width: 100%;
-    margin: 10px;
-    gap: 16px;
-    height: calc(100vh - 220px);
+    margin: 10px 0;
+    gap: 14px;
+    height: calc(100vh - 230px);
+    justify-content: center;
   }
 
   .card {
     width: 46%;
-    height: 260px;
+    height: 250px;
   }
 
   .card img {
@@ -701,109 +748,66 @@ html, body {
   }
 
   .play-btn {
-    width: 44px;
-    height: 44px;
-    top: 150px;
+    width: 42px;
+    height: 42px;
+    right: 12px;
     left: auto;
-    right: 12px;
+    top: 145px;
   }
 
-  /* ================= SONG LIST ================= */
+  /* ----------Sangeet LIBRARY ---------- */
+  .library {
+    height: 80vh;
+    
+  }
+
   .songlist {
-    height: 60vh;
+    height: 65vh;
   }
-
-  /* ================= PLAYBAR ================= */
-  .playbar {
-    width: 94%;
-    left: 3%;
-    padding: 1px 0px 15px;
-    flex-direction: column;
-    gap: 10px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .heading{
+    padding:3px 10px 16px 10px;
   }
-
-  .songinfo {
-
-  margin: 0 auto;
-max-width: 50%;       /* 🔥 playbar ke andar */
-   white-space: nowrap;
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-   font-size: 15px;
-  text-align: center;
-
-  height: 20px;               /* 🔥 single-line height */
-  line-height: 20px;
-    padding-bottom: 50px;
+  .footer {
+    display: flex;
+    font-size: 10px;
+    color: grey;
+    gap: 9px;
+    position: absolute;
+    bottom: 14px;
+    padding: 7px;
+  }
+  .songinfo{
+    margin-bottom:67px;
+    margin-right: 0;
+    background-color:#413b3bc4;
+  }
+  .playbar{
+    padding:44px 22px 26px;
+    border-radius: 25px;
+    width:98%;
+  }
+  .volume{
+    left:20px;
+  }
+  .volume-percent{
     
-
-    
+    left: -200px;
+    top: 70%;
   }
-    .library {
-      height: 85vh;
+  .volume-range{
+    left:32px;
+    width:80px;
   }
-
-  .songbtn {
-    position: relative;
-    padding-top: 0;
-    top:20px;
-    
-  }
-
   .songtime {
-    position: static;
-    padding-left: 290px;
-    font-size: 12px;
-  }
-
-  .seekbar {
-    left: 12px;
-    right: 12px;
-  }
-  .spotifyPlaylist h1{
-    padding-bottom: 5px;
-  }
-.volume-icon {
-    left: 37px;
-    position: absolute;
-    width: 22px;
-    cursor: pointer;
-    filter: invert(1);
-    opacity: 0.85;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    margin-left: 366px;
+    font-size: 14px;
+    width: 106px;
+    
 }
-.volume:hover .volume-range {
-    width: 59px;
-    opacity: 1;
-    pointer-events: auto;
+.songbtn{
+  padding: 0;
+  gap:15px;
 }
-.volume-range {
-    position: absolute;
-    left: 64px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: width 0.25s ease, opacity 0.25s ease;
-}
-.volume-percent {
-    position: absolute;
-    left: 93px;
-    top: 50%;
-    transform: translateY(-190%);
-    width: 0;
-    opacity: 0;
-    pointer-events: none;
-    font-size: .9rem;
-    color: rgb(140, 137, 137);
-}
-.cross{
-  display: none;
-}
-
 }
 
 
