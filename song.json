@@ -113,14 +113,14 @@
         "id": 17,
         "title": "happy Hits!",
         "artist": "Aren stipher",
-        "file": "Music-Player/song/song20.mp3",
-        "cover": "Music-Player/images/img16.jpg"
+        "file": "Music-player/song/song17.mp3",
+        "cover": "Music-player/images/img16.jpg"
     },   {
         "id": 18,
         "title": "happy Hits!",
         "artist": "Aren stipher",
         "file": "Music-player/song/song18.mp3",
-        "cover": "Music-player/images/img12.jpg"
+        "cover": "Music-player/images/img17.jpg"
     },   {
         "id": 19,
         "title": "happy Hits!",
@@ -141,5 +141,6 @@
         "cover": "Music-player/images/img20.jpg"
     }
 ]
+
 
 
