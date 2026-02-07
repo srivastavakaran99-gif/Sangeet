@@ -253,7 +253,7 @@ volumeIcon.addEventListener("click", () => {
 const cardContainer = document.querySelector(".cardContainer");
 let currentSong = null;
 
-fetch("song.json")
+fetch("./song.json")
   .then(res => res.json())
   .then(songs => {
     songs.forEach(song => {
@@ -295,6 +295,7 @@ function addPlayEvents() {
     });
   });
 }
+
 
 
 
