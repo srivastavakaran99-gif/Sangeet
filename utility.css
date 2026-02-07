@@ -25,11 +25,12 @@
     background-color: #121212;
 }
 .rounded{
-    border-radius: 10px;
+    border-radius: 30px;
 }
 .m-2{
     margin:5px;
 }
 .p-1{
     padding:10px;
+
 }
