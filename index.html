@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./utility.css" />
     <title>Spotify Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Flow+Circular&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Momo+Signature&family=Playwrite+NZ+Basic:wght@100..400&family=Playwrite+NZ+Guides&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="container flex bg-black">
@@ -36,9 +39,12 @@
           </div> -->
           <ul>
             <!--HOME,SEARCH-->
-            <li><img class="invert" src="home.svg" alt="Home Icon" />home</li>
             <li>
-              <img class="invert" src="search.svg" alt="Search Icon" />Search
+              <img class="invert homebtn" src="home.svg" alt="Home Icon" />
+              <span>home</span></li>
+            <li>
+              <img class="invert searchbtn" src="search.svg" alt="Search Icon" />
+              <span>Search</span>
             </li>
           </ul>
         </div>
@@ -46,12 +52,12 @@
         <div class="library bg-grey rounded m-2 p-1">
           <div class="heading">
             <img src="playlist.svg" class="invert" alt="Playlist Icon" />
-            <h2>Your Library</h2>
+            <h2>Sangeet Library</h2>
           </div>
           <div class="songlist">
             <ul id="library">
               <li>
-                <!--JAVA SCRIPT SONG LIST-->
+                <!--=======++++++++++JAVA SCRIPT SONG LIST++++++++++++++=================-->
               </li>
             </ul>
           </div>
@@ -137,99 +143,10 @@
         </div>
         <!--Right side,playlist,songscards-->
         <div class="spotifyPlaylist">
-          <h1>Spotify playlist</h1>
+          <h1>Sangeet playlist</h1>
           <div class="cardContainer">
-            <div class="card img1">
-              <img src="a.jpg" alt="song number 1" />
-              <button class="play-btn" data-id="1">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-              </button>
-              <h3>happy Hits!</h3>
-              <p>Aren stipher</p>
-            </div>
-            <div class="card img2">
-              <img src="img2.jpg" alt="song number 1" />
-              <button class="play-btn" data-id="2">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-              </button>
-              <h3>DIL LAGANA MANA THA</h3>
-              <p>Krish Mondal,Kishor Mondal</p>
-            </div>
-            <div class="card img2">
-              <img src="img3.jpg" alt="song number 1" />
-              <button class="play-btn" data-id="3">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-              </button>
-              <h3>Aasma Aasma</h3>
-              <p>Jubin Nautiyal,Neeti Mohan</p>
-            </div>
-            <div class="card img2">
-              <img src="img4.jpg" alt="song number 1" />
-              <button class="play-btn" data-id="4">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-              </button>
-              <h3>KETHE REH GAYA</h3>
-              <p>Neeti Mohan,Abhijeet Vaghani</p>
-            </div>
-            <div class="card img2">
-              <img src="img5.jpg" alt="song number 1" />
-              <button class="play-btn" data-id="5">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-              </button>
-              <h3>AE MERE WATAN KE LOGO</h3>
-              <p>Lata Mangeshkar</p>
-            </div>
-            <div class="card img2">
-              <img src="a.jpg" alt="song number 1" />
-              <button class="play-btn" data-id="6">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-              </button>
-              <h3>AE MERE WATAN KE LOGO</h3>
-              <p>Lata Mangeshkar</p>
-            </div>
-            <div class="card img2">
-              <img src="img2.jpg" alt="song number 1" />
-              <button class="play-btn" data-id="7">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-              </button>
-              <h3>AE MERE WATAN KE LOGO</h3>
-              <p>Lata Mangeshkar</p>
-            </div>
-            <div class="card img2">
-              <img src="img4.jpg" alt="song number 1" />
-              <button class="play-btn" data-id="8">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-              </button>
-              <h3>AE MERE WATAN KE LOGO</h3>
-              <p>Lata Mangeshkar</p>
-            </div>
-            <div class="card img2">
-              <img src="img3.jpg" alt="song number 1" />
-              <button class="play-btn" data-id="9">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-              </button>
-              <h3>AE MERE WATAN KE LOGO</h3>
-              <p>Lata Mangeshkar</p>
-            </div>
-          </div>
+            <!--=================== Java Script================================ -->
+          </div> 
           <!-------------- Playbar----------------- -->
           <div class="playbar">
               <div class="seekbar">
@@ -247,7 +164,7 @@
                 <div class="volume">
                       <img class="volume-icon" src="volume.svg" alt="volume" />
                       <input type="range" class="volume-range" min="0" max="100" value="100">
-                      <span class="volume-percent">70%</span>
+                      <span class="volume-percent">100%</span>
                   </div>
                   
               <div class="songtime">
@@ -263,4 +180,3 @@
 <script src="./script.js"></script>
 </body>
 </html>
-
