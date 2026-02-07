@@ -255,8 +255,8 @@ let currentSong = null;
 
 fetch("./song.json")
   .then(res => res.json())
-  .then(songs => {
-    songs.forEach(song => {
+  .then(songs1 => {
+    songs1.forEach(song => {
       const card = document.createElement("div");
       card.classList.add("card");
 
@@ -295,6 +295,7 @@ function addPlayEvents() {
     });
   });
 }
+
 
 
 
