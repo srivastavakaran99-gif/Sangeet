@@ -6,7 +6,7 @@ let audio = new Audio();
 // Async function to fetch songs
 async function loadSongs() {
   try {
-    const res = await fetch("http://127.0.0.1:3000/song.json");
+    const res = await fetch("http://./song.json");
     
     if (!res.ok) { //taki error console me dekhe
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -409,6 +409,7 @@ volumeIcon.addEventListener("click", () => {
 // // Listen to play/pause events on audio
 // audio.addEventListener("play", ()=> updatePlayBtn(false));   // song is playing
 // audio.addEventListener("pause", ()=> updatePlayBtn(true));   // song paused
+
 
 
 
