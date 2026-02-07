@@ -255,20 +255,20 @@ let currentSong = null;
 
 fetch("./song.json")
   .then(res => res.json())
-  .then(songs1 => {
-    songs1.forEach(song => {
+  .then(songs => {
+    songs.forEach(song1 => {
       const card = document.createElement("div");
       card.classList.add("card");
 
       card.innerHTML = `
-        <img src="${song.cover}" alt="${song.title}">
-        <button class="play-btn" data-audio="${song.file}" data-title="${song.title}">
+        <img src="${song1.cover}" alt="${song1.title}">
+        <button class="play-btn" data-audio="${song1.file}" data-title="${song1.title}">
           <svg viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"></path>
           </svg>
         </button>
-        <h3>${song.title}</h3>
-        <p>${song.artist}</p>
+        <h3>${song1.title}</h3>
+        <p>${song1.artist}</p>
       `;
 
       cardContainer.appendChild(card);
@@ -295,6 +295,7 @@ function addPlayEvents() {
     });
   });
 }
+
 
 
 
