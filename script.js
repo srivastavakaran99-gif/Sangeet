@@ -3,44 +3,45 @@ let songs = [];
 let audio = new Audio();
 
 
-// Async function to fetch songs
+const libraryUL = document.getElementById("library");
 async function loadSongs() {
   try {
     const res = await fetch("./song.json");
-    
-    if (!res.ok) { //taki error console me dekhe
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const data = await res.json(); //
-    songs = data;  // 🔥 store in global variable
-    console.log("API se data aaya:", songs);
+    if (!res.ok) throw new Error("Song load failed");
 
-    let songlist = document.querySelector(".songlist").getElementsByTagName("ul")[0]
-    songlist.innerHTML = ""; // clear first
-    for(const music of songs){
-        songlist.innerHTML +=  `<li data-id="${music.id}">
-                                <img class="invert" src="music.svg" alt=""> 
-                          <div class="info">
-                          <div>${music.title}</div>
-                          <div>${music.artist}</div>
-                          </div>
-                          <div class="playnow">
-                          <span>Play Now</span>
-                          <img class="invert" src="play.svg" alt="">
-                          </div>
-                          </li>`
-                        }
+    songs = await res.json();
 
-                    
-                      } 
-  catch (err) {
-  console.log("Error:", err);
+    // ================= LIBRARY Song List=================
+    libraryUL.innerHTML = "";
+
+    songs.forEach(song => {
+      const li = document.createElement("li");
+      li.dataset.id = song.id;
+
+      li.innerHTML = `
+        <img class="invert" src="music.svg">
+        <div class="info">
+          <div>${song.title}</div>
+          <div>${song.artist}</div>
+        </div>
+        <div class="playnow">
+          <span>Play Now</span>
+          <img class="invert" src="play.svg">
+        </div>
+      `;
+
+      libraryUL.appendChild(li);
+    });
+
+    // =================Songs CARDS in Card Container =================
+    renderCards();
+
+  } catch (err) {
+    console.error(err);
   }
 }
-  
-
-// Call the async function
 loadSongs();
+
   
 //=========================================================================================================================================
  
@@ -62,7 +63,32 @@ document.querySelector(".songlist").addEventListener("click", (e) => {
 
   console.log("Playing from library:", song.title);
 }); 
-   
+
+//----------------------------------------
+//===========================[ SONG CARD CONATINER]===========================
+
+const cardContainer = document.querySelector(".cardContainer");
+function renderCards() {
+  cardContainer.innerHTML = "";
+
+  songs.forEach(song => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${song.cover}" alt="${song.title}">
+      <button class="play-btn" data-id="${song.id}">
+        <svg viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"></path>
+        </svg>
+      </button>
+      <h3>${song.title}</h3>
+      <p>${song.artist}</p>
+    `;
+
+    cardContainer.appendChild(card);
+  });
+}
 //-----------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------
 //PHASE_2
@@ -170,6 +196,75 @@ seekbar.addEventListener("click", (e) => {
   audio.currentTime = newTime;
 });
 
+//=================[Seekbar Circle ko Drag krwana]==============
+// ================= HELPER FUNCTION =================
+
+let isDragging = false;
+
+// ================= HELPER =================
+function seekTo(clientX) {
+  const rect = seekbar.getBoundingClientRect();
+  let x = clientX - rect.left;
+
+  if (x < 0) x = 0;
+  if (x > rect.width) x = rect.width;
+
+  const percent = x / rect.width;
+  circle.style.left = percent * 100 + "%";
+
+  if (audio.duration) {
+    audio.currentTime = percent * audio.duration;
+  }
+}
+
+// ================= DESKTOP =================
+circle.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  e.preventDefault();
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  seekTo(e.clientX);
+});
+
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+
+// ================= MOBILE (TOUCH) =================
+circle.addEventListener("touchstart", (e) => {
+  isDragging = true;
+  e.preventDefault();
+});
+
+document.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+  seekTo(e.touches[0].clientX);
+});
+
+document.addEventListener("touchend", () => {
+  isDragging = false;
+});
+
+// ================= TAP ON SEEKBAR (MOBILE + DESKTOP) =================
+seekbar.addEventListener("click", (e) => {
+  seekTo(e.clientX);
+});
+
+seekbar.addEventListener("touchstart", (e) => {
+  seekTo(e.touches[0].clientX);
+});
+
+// ================= AUTO UPDATE =================
+audio.addEventListener("timeupdate", () => {
+  if (!audio.duration || isDragging) return;
+
+  const percent = (audio.currentTime / audio.duration) * 100;
+  circle.style.left = percent + "%";
+  currentTimeEl.innerText = formatTime(audio.currentTime);
+});
+
 //===========================================================[Current time and total time update]================================
 
  const currentTimeEl = document.querySelector(".current-time");
@@ -246,71 +341,242 @@ volumeIcon.addEventListener("click", () => {
 
 });
 
-//----------------------------------------
-//----------------------------------------
-//===========================[ SONG CARD CONATINER]===========================
 
-const cardContainer = document.querySelector(".cardContainer");
-let currentSong = null;
+//=============================[Login/signup ]=========================================
+// ===================== ELEMENTS =====================
+const signupBtn = document.getElementById("signupBtn");
+const loginBtn = document.getElementById("loginBtn");
+const modal = document.getElementById("authModal");
+const title = document.getElementById("authTitle");
+const submitBtn = document.getElementById("submitAuth");
+const errorBox = document.getElementById("authError");
 
-fetch("./song.json")
-  .then(res => res.json())
-  .then(songs => {
-    songs.forEach(song1 => {
-      const card = document.createElement("div");
-      card.classList.add("card");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
 
-      card.innerHTML = `
-        <img src="${song1.cover}" alt="${song1.title}">
-        <button class="play-btn" data-audio="${song1.file}" data-title="${song1.title}">
-          <svg viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"></path>
-          </svg>
-        </button>
-        <h3>${song1.title}</h3>
-        <p>${song1.artist}</p>
-      `;
+const usernameEl = document.getElementById("username");
 
-      cardContainer.appendChild(card);
-    });
+const logoutBtn = document.getElementById("logoutBtn");
 
-    addPlayEvents();
-  });
 
-function addPlayEvents() {
-  document.querySelectorAll(".play-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const songSrc = btn.dataset.audio;
-      const title = btn.dataset.title;
+let mode = "login"; // login | signup
 
-      if (currentSong !== songSrc) {
-        audio.src = songSrc;
-        audio.play();
-        currentSong = songSrc;
-      } else {
-        audio.paused ? audio.play() : audio.pause();
-      }
+// ===================== OPEN MODAL =====================
+signupBtn.addEventListener("click", () => {
+  modal.classList.remove("hidden");
+  title.innerText = "Sign Up";
+  nameInput.style.display = "block";
+  mode = "signup";
+});
 
-      document.querySelector(".songinfo").innerText = title;
-    });
-  });
+loginBtn.addEventListener("click", () => {
+  modal.classList.remove("hidden");
+  title.innerText = "Login";
+  nameInput.style.display = "none";
+  mode = "login";
+});
+
+// ===================== SUBMIT =====================
+submitBtn.addEventListener("click", () => {
+  errorBox.innerText = "";
+
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  // ---------- SIGNUP ----------
+  if (mode === "signup") {
+    if (!name || !email || !password) {
+      errorBox.innerText = "All fields are required";
+      return;
+    }
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ name, email, password })
+    );
+
+    alert("Signup successful 🎉");
+    modal.classList.add("hidden");
+
+    nameInput.value = "";
+    emailInput.value = "";
+    passwordInput.value = "";
+  }
+
+  // ---------- LOGIN ----------
+  if (mode === "login") {
+    if (!email || !password) {
+      errorBox.innerText = "Email & password required";
+      return;
+    }
+
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!savedUser) {
+      errorBox.innerText = "No user found. Please signup first";
+      return;
+    }
+
+    if (
+      email === savedUser.email &&
+      password === savedUser.password
+    ) {
+      // 🔥 IMPORTANT FIX
+      localStorage.setItem(
+        "loggedUser",
+        JSON.stringify({
+          name: savedUser.name,
+          email: savedUser.email
+        })
+      );
+
+      alert("Login successful ✅");
+      modal.classList.add("hidden");
+      updateHeaderUser();
+    } else {
+      errorBox.innerText = "Invalid credentials ❌";
+    }
+
+    emailInput.value = "";
+    passwordInput.value = "";
+  }
+});
+
+// ===================== HEADER UPDATE =====================
+function updateHeaderUser() {
+  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+
+  if (loggedUser && loggedUser.name) {
+    usernameEl.innerText = `Hi, ${loggedUser.name} 👋`;
+    loginBtn.style.display = "none";
+    signupBtn.style.display = "none";
+  } else {
+    usernameEl.innerText = "";
+    loginBtn.style.display = "inline-block";
+    signupBtn.style.display = "inline-block";
+  }
+}
+
+// ===================== PAGE LOAD =====================
+document.addEventListener("DOMContentLoaded", () => {
+  updateHeaderUser();
+});
+//------------------------------------------------------------------------
+
+//==================Logout===========================
+function updateHeaderUser() {
+  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+
+  if (loggedUser && loggedUser.name) {
+    usernameEl.innerText = `Hi, ${loggedUser.name} 👋`;
+
+    loginBtn.style.display = "none";
+    signupBtn.style.display = "none";
+    logoutBtn.classList.remove("hidden");
+  } else {
+    usernameEl.innerText = "";
+
+    loginBtn.style.display = "inline-block";
+    signupBtn.style.display = "inline-block";
+    logoutBtn.classList.add("hidden");
+  }
+}
+//LOgin Button click logic
+logoutBtn.addEventListener("click", () => {
+  localStorage.removeItem("loggedUser");
+
+  alert("Logged out successfully 👋");
+
+  updateHeaderUser();
+});
+
+//================================[Logic ke bina music block]============================================
+//STEP 1: EK STRONG GUARD FUNCTION banao
+//JS ke top me 
+
+function requireLogin() {
+  const user = localStorage.getItem("loggedUser");
+  if (!user) {
+    alert("Please login to play music 🔒");
+    audio.pause();            //  FORCE STOP
+    audio.currentTime = 0;    // optional
+    return false;
+  }
+  return true;
+}
+
+// STEP 2: playSong() ko FINAL boss banao 
+
+//Sirf yahi se song chalega
+
+function playSong(index) {
+  if (!requireLogin()) return;   //  FULL BLOCK
+
+  currentIndex = index;
+  const song = songs[index];
+  if (!song) return;
+
+  audio.src = song.file;
+  audio.play();
+
+  songInfo.innerText = `${song.title} - ${song.artist}`;
 }
 
 
 
 
 
+// STEP 4: togglePlay ko bhi LOCK karo
+function togglePlay() {
+  if (!requireLogin()) return;
+
+  if (!audio.src) {
+    playSong(currentIndex);
+    return;
+  }
+
+  audio.paused ? audio.play() : audio.pause();
+}
+
+// STEP 5: Library click (NO direct play)
+document.querySelector(".songlist").addEventListener("click", (e) => {
+  const li = e.target.closest("li");
+  if (!li) return;
+
+  const index = songs.findIndex(s => s.id == li.dataset.id);
+  if (index !== -1) playSong(index);
+});
+
+// STEP 6: Card play (NO direct play)
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".play-btn");
+  if (!btn) return;
+
+  const index = songs.findIndex(s => s.id == btn.dataset.id);
+  if (index !== -1) playSong(index);
+});
 
 
+//=====================[Close button in Signup box]==================
+const closeModalBtn = document.querySelector(".close1");
 
+closeModalBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");   // popup band
+  errorBox.innerText = "";         // error clear
 
-
-
-
-
-
-
-
+  // optional: inputs clear
+  nameInput.value = "";
+  emailInput.value = "";
+  passwordInput.value = "";
+});
+//Popup ke bahar click karne par bhi close ho jaye
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
 
 
 
