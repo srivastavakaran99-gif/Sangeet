@@ -301,6 +301,7 @@ html, body {
   background: #555;
   border-radius: 10px;
   pointer-events: auto; 
+  
 }
 
 .circle{
@@ -308,7 +309,7 @@ html, body {
   top: 50%;
   left: 0%;
   transform: translate(-50%, -50%);
-  width: 12px;
+  width: 14px;
   height: 12px;
   background: #1db954;
   border-radius: 50%;
@@ -316,6 +317,7 @@ html, body {
   transition: left 0.1s linear; 
   transform: translate(-50%, -50%);
   pointer-events: auto;
+  
 }
 .songinfo{
   margin-right: 600px;
@@ -663,7 +665,71 @@ html, body {
 .sangeet-logo .wave-icon path {
   animation: waveFlow 0.8s linear infinite;
 }
+/*===========================[Login/Signup]======================================*/
+.auth-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
 
+.auth-box {
+  background: #181818;
+  padding: 20px;
+  width: 280px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-box input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.auth-box button {
+  background: #1db954;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+/*Login pesron ki details show kro*/
+.user-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#username {
+  font-weight: 600;
+  color: #1db954; /* Spotify green 😉 */
+}
+/*---------------------*/
+  .close1 {
+   position: relative;
+    padding: 0px;
+    top: -41px;
+    right: -174px;
+    display: block;
+    width: 24px;
+    cursor: pointer;
+  }
 
 
 /*=========================================================================================
