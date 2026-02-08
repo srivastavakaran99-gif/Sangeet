@@ -34,9 +34,7 @@
 
 
 
-          <!-- <div class="logo">
-            <img class="invert" src="logo.svg" alt="Spotify Logo" />
-          </div> -->
+     
           <ul>
             <!--HOME,SEARCH-->
             <li>
@@ -136,9 +134,11 @@
               />
             </svg>
           </div>
-          <div class="buttons">
-            <button class="btn login">Sign up</button>
-            <button class="btn signup">Log In</button>
+          <div class="buttons user-area">
+            <span id="username"></span>
+             <button class="btn logout hidden" id="logoutBtn">Logout</button>
+            <button class="btn login" id="signupBtn">Sign up</button>
+            <button class="btn signup" id="loginBtn">Log In</button>
           </div>
         </div>
         <!--Right side,playlist,songscards-->
@@ -177,6 +177,24 @@
   </div>
   </div>
 </div>
+<div class="auth-modal hidden" id="authModal">
+  <div class="auth-box">
+    <h2 id="authTitle">Login</h2>
+    
+          <div class="close1">
+          <img   width="30" class="invert" src="close.svg" alt="">
+          </div>
+       
+
+    <input type="text" id="name" placeholder="Name (signup only)">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <button id="submitAuth">Continue</button>
+    <p class="error" id="authError"></p>
+  </div>
+</div>
+
 <script src="./script.js"></script>
 </body>
 </html>
